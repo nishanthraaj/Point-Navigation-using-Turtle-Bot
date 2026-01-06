@@ -1,5 +1,9 @@
 # 🤖 ROS2 Autonomous Driving and Navigation SLAM with TurtleBot3
 
+[![ROS2](https://img.shields.io/badge/ROS2-Humble%20|%20Galactic-blue)](https://docs.ros.org/en/humble/)
+[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+
 ```
 ╔═══════════════════════════════════════════════════════════════════╗
 ║                   TURTLEBOT3 AUTONOMOUS NAVIGATION                ║
@@ -8,6 +12,9 @@
 ```
 
 A comprehensive ROS2 package for autonomous navigation, SLAM (Simultaneous Localization and Mapping), and navigation of the TurtleBot3 platform in various environments.
+
+**Maintainer**: nishanthraaj (rvnish2004@gmail.com)  
+**License**: Apache-2.0
 
 ## 📋 Project Overview
 
@@ -357,22 +364,14 @@ occupancy_grid_pub
   
 sdf_spawner
   └─ Spawns Gazebo models from SDF files
-  
-maze_solver
-  └─ Autonomous maze solving algorithm
-  
-autonomous_waiter_lite
-  └─ Single goal navigation demo
-  
-autonomous_waiter
-  └─ Multi-goal navigation demo
 ```
 
 **Package Metadata:**
 ```yaml
 Name:        autonomous_tb3
 Version:     0.0.0
-Maintainer:  Luqman (noshluk2@gmail.com)
+Maintainer:  nishanthraaj (rvnish2004@gmail.com)
+License:     Apache-2.0
 Build Type:  ament_python
 Format:      ROS2 Package Format 3
 ```
@@ -430,10 +429,40 @@ Phase 4 - Advanced
   □ Cloud robotics support
 ```
 
-## License
+## ✅ Improvements & Bug Fixes
 
-License declaration to be determined (see package.xml).
+This version includes several critical bug fixes and improvements:
 
-## Contact
+**Critical Fixes**:
+- ✅ Fixed `use_sim_time` synchronization across all Nav2 nodes (18 parameters)
+- ✅ Fixed `trans_stopped_velocity` configuration error
+- ✅ Removed broken entry points that prevented package build
+- ✅ Fixed texture directory typo
 
-For questions or contributions, contact: noshluk2@gmail.com
+**Code Quality**:
+- ✅ Added robust error handling in `spawn_entity.py`
+- ✅ Added argument validation to prevent crashes
+- ✅ Removed unused imports
+- ✅ Fixed typos in code and comments
+
+**Result**: Package now builds successfully and navigation works correctly in Gazebo simulation.
+
+```
+
+## 📄 License
+
+This project is licensed under the **Apache License 2.0**.
+
+See [LICENSE](LICENSE) file for details.
+
+## 📧 Contact
+
+**Maintainer**: nishanthraaj  
+**Email**: rvnish2004@gmail.com
+
+For questions, issues, or contributions, please contact the maintainer.
+
+## 🙏 Credits
+
+Original work by Luqman (noshluk2@gmail.com).  
+Enhanced and debugged by nishanthraaj.
