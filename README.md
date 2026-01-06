@@ -45,7 +45,6 @@ ROS2-Autonomous-Driving-and-Navigation-SLAM-with-TurtleBot3/
     │
     ├── 🚀 launch/                         [ROS2 Launch Files]
     │   ├── mapping.launch.py              ← Start Cartographer SLAM
-    │   ├── maze_navigation.launch.py      ← Full maze navigation setup
     │   └── tb3_world_navigation.launch.py ← TurtleBot3 world navigation
     │
     ├── 📦 resource/                       [Package Resources]
@@ -65,29 +64,6 @@ ROS2-Autonomous-Driving-and-Navigation-SLAM-with-TurtleBot3/
 │ • Cartographer Node (SLAM)           │
 │ • Occupancy Grid Node (Map Output)   │
 └──────────────────────────────────────┘
-```
-
-#### `maze_navigation.launch.py` - Full Maze Navigation
-```
-┌────────────────────────────────────────────────────────────┐
-│              MAZE NAVIGATION PIPELINE                      │
-├────────────────────────────────────────────────────────────┤
-│  Gazebo              Robot              Mapping            │
-│  ├─ gzserver        ├─ State Pub       └─ SLAM Toolbox   │
-│  └─ gzclient        └─ Spawner              ↓             │
-│       ↓                  ↓            Nav2 Navigation      │
-│   Simulation        TurtleBot3         ├─ Planner         │
-│                                        ├─ Controller      │
-│                                        └─ BehaviorTrees   │
-│                                             ↓             │
-│                                        RViz2 Viz          │
-└────────────────────────────────────────────────────────────┘
-```
-
-**Launch Arguments:**
-```yaml
-x_pose: -5.2  # Robot initial X position
-y_pose: -6.7  # Robot initial Y position
 ```
 
 #### `tb3_world_navigation.launch.py` - Pre-mapped Navigation
@@ -186,7 +162,6 @@ Cartographer SLAM Tuning:
 | `tb3_world.pgm` | Occupancy grid map image | PGM (Portable GrayMap) |
 | `tb3_world.yaml` | Map metadata & origin | YAML |
 | `maze.yaml` | Maze environment map | YAML |
-
 ## 📦 Dependencies
 
 ### ROS2 Packages
@@ -252,13 +227,6 @@ source ~/ros2_ws/install/setup.bash
 ## 🚀 Usage
 
 ### 🎯 Maze Navigation (Full Setup)
-```bash
-ros2 launch autonomous_tb3 maze_navigation.launch.py
-```
-**Launches:** Gazebo + SLAM + Nav2 + RViz2
-**Use Case:** Autonomous maze solving with real-time mapping
-
-### 🗺️ TurtleBot3 World Navigation (Pre-mapped)
 ```bash
 ros2 launch autonomous_tb3 tb3_world_navigation.launch.py
 ```
@@ -422,9 +390,8 @@ Project Highlights:
   ├─ Actor models for dynamic obstacles
   ├─ Table and object models
   ├─ Beer/item models with textures
-  └─ Custom scripts for simulation
-
-✓ Production-Ready SLAM
+  Single Map Support
+  └─ tb3_world.yaml (Standard world navigation
   ├─ Cartographer algorithm (proven performance)
   ├─ SLAM Toolbox (alternative implementation)
   └─ Real-time occupancy grid generation
