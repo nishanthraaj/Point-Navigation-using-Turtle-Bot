@@ -19,24 +19,22 @@ setup(
         (os.path.join('share',package_name,'models/beer') , glob('models/beer/*.sdf')),
         (os.path.join('share',package_name,'models/beer') , glob('models/beer/*.config')),
         (os.path.join('share',package_name,'models/beer/scripts') , glob('models/beer/scripts/*')),
-        (os.path.join('share',package_name,'models/beer/texutres') , glob('models/beer/texutres/*')),
+        (os.path.join('share',package_name,'models/beer/textures') , glob('models/beer/textures/*')),
 
 
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='luqman',
-    maintainer_email='noshluk2@gmail.com',
-    description='TODO: Package description',
-    license='TODO: License declaration',
+    maintainer='nishanthraaj',
+    maintainer_email='rvnish2004@gmail.com',
+    description='TurtleBot3 autonomous navigation with SLAM and Nav2 stack',
+    license='Apache-2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
             'occupancy_grid_pub = autonomous_tb3.occupancy_grid_pub:main',
             'sdf_spawner = autonomous_tb3.spawn_entity:main',
-            'maze_solver = autonomous_tb3.maze_solver:main',
-            'autonomous_waiter_lite = autonomous_tb3.hotel_waiter_single_goal:start_app',
-            'autonomous_waiter = autonomous_tb3.hotel_waiter_multi_button:start_app'
+            # Removed broken entry points: maze_solver, autonomous_waiter_lite, autonomous_waiter
         ],
     },
 )

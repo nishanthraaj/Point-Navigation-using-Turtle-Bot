@@ -17,7 +17,7 @@ def generate_launch_description():
     IncludeLaunchDescription(
         PythonLaunchDescriptionSource([get_package_share_directory('turtlebot3_gazebo'),'/launch','/turtlebot3_world.launch.py'])
     ),
-    # Integerating Nav2 Stack
+    # Integrating Nav2 Stack
     IncludeLaunchDescription(
         PythonLaunchDescriptionSource([get_package_share_directory('nav2_bringup'),'/launch','/bringup_launch.py']),
         launch_arguments={

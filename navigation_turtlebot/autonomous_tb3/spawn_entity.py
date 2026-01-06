@@ -15,12 +15,19 @@ import rclpy
 from gazebo_msgs.srv import SpawnEntity
 def main():
     argv = sys.argv[1:]
+    
+    # Validate arguments
+    if len(argv) < 2:
+        print("Usage: sdf_spawner <sdf_file> <entity_name> [x] [y]")
+        print("Example: ros2 run autonomous_tb3 sdf_spawner model.sdf my_entity 0.0 0.0")
+        return
+    
     rclpy.init()
     node = rclpy.create_node("Spawning_Node")
     client = node.create_client(SpawnEntity, "/spawn_entity")
     if not client.service_is_ready():
         client.wait_for_service()
-        node.get_logger().info("conencted to spawner")
+        node.get_logger().info("connected to spawner")
     sdf_path = argv[0]
     request = SpawnEntity.Request()
     request.name = argv[1]
@@ -30,7 +37,20 @@ def main():
         request.initial_pose.position.y = float(argv[3])
         if (argv[1] == 'beer'):
             request.initial_pose.position.z=1.5
-    request.xml = open(sdf_path, 'r').read()
+    # Read SDF file with error handling
+    try:
+        with open(sdf_path, 'r') as f:
+            request.xml = f.read()
+    except FileNotFoundError:
+        node.get_logger().error(f"SDF file not found: {sdf_path}")
+        node.destroy_node()
+        rclpy.shutdown()
+        return
+    except Exception as e:
+        node.get_logger().error(f"Error reading SDF file: {e}")
+        node.destroy_node()
+        rclpy.shutdown()
+        return
 
     node.get_logger().info("Sending service request to `/spawn_entity`")
     future = client.call_async(request)

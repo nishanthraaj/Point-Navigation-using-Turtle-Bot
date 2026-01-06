@@ -7,7 +7,7 @@ The given Python code is a ROS2 node that publishes an Occupancy Grid message to
 import rclpy
 from rclpy.node import Node
 from nav_msgs.msg import OccupancyGrid
-from std_msgs.msg import String
+
 from std_msgs.msg import Header
 import numpy as np
 

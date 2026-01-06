@@ -3,9 +3,10 @@
 <package format="3">
   <name>autonomous_tb3</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="noshluk2@gmail.com">luqman</maintainer>
-  <license>TODO: License declaration</license>
+  <description>TurtleBot3 autonomous navigation with SLAM and Nav2 stack</description>
+  <maintainer email="rvnish2004@gmail.com">nishanthraaj</maintainer>
+  <author email="rvnish2004@gmail.com">nishanthraaj</author>
+  <license>Apache-2.0</license>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
