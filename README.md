@@ -462,7 +462,4 @@ See [LICENSE](LICENSE) file for details.
 
 For questions, issues, or contributions, please contact the maintainer.
 
-## 🙏 Credits
 
-Original work by Luqman (noshluk2@gmail.com).  
-Enhanced and debugged by nishanthraaj.
